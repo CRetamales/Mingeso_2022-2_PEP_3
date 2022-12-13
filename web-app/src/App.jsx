@@ -8,6 +8,7 @@ import Layout from './components/Layout/Layout'
 //Paginas
 import Home from './pages/Home'
 import Index from './pages/Index'
+import Pizzas from './pages/Pizzas'
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/section/pizzas" element={<Pizzas />} />
         </Routes>
     </Layout>
   )
