@@ -9,3 +9,5 @@ const productExtra = [
     {'id': 3, 'name': 'Salsa Picante', 'price': 500, 'type': 'salsas', 'image': salsaPicante},
     {'id': 4, 'name': 'Salsa Tomate', 'price': 500, 'type': 'salsas', 'image': salsaTomate},
 ]
+
+export default productExtra;

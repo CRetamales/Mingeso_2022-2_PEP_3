@@ -14,3 +14,5 @@ const productDrink = [
     { 'id': 5, 'name': 'Cachantun con Gas', 'price': 1000, 'size': '500ml' , 'type': 'agua' , 'image': drinkCachantunConGas},
     { 'id': 6, 'name': 'Cachantun sin Gas', 'price': 1000, 'size': '500ml' , 'type': 'agua' , 'image': drinkCachantunSinGas},
 ]
+
+export default productDrink;

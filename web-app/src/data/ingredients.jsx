@@ -14,3 +14,5 @@ const ingredientes  =  [
     {'id': 12, 'name': 'tomate', 'type': 'vegetales', 'cost': 1350},
     {'id': 13, 'name': 'champiñones', 'type': 'vegetales', 'cost': 1350},
 ]
+
+export  default  ingredientes;

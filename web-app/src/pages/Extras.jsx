@@ -1,10 +1,10 @@
-import Navbar from "../components/Navbar"
 
 
-const Extras = ({ openCart, cart ,addToCart}) => {
+
+const Extras = () => {
     return (
         <>
-            <Navbar openCart={openCart} cart={cart} />
+
         </>
     )
 }

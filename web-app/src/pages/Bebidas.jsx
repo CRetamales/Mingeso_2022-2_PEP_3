@@ -1,10 +1,10 @@
-import Navbar from "../components/Navbar"
 
 
-const Bebidas = ({ openCart, cart ,addToCart}) => {
+
+const Bebidas = () => {
     return (
         <>
-            <Navbar openCart={openCart} cart={cart} />
+            
         </>
     )
 }
