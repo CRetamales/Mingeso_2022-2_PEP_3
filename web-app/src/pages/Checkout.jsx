@@ -19,6 +19,15 @@ const Checkout = ( { openCart, cart } ) => {
         }
     }, []);
 
+    //Limpiar carrito despues de pagar
+    const clearCart = () => {
+        localStorage.removeItem('cart');
+        localStorage.removeItem('total_cart');
+        setCartToPay([]);
+        setCartTotal(0);
+    }
+
+
 
     const cartContent = cartToPay.map((item, index) => {
         return (
@@ -165,7 +174,12 @@ const Checkout = ( { openCart, cart } ) => {
                     {personalInformationRender}
                     {paymentInformationRender}
                     {billingAddress}
-                    <Button variant="contained" color="success" className="mt-4 mb-4">Completar pago</Button>
+                    <Button variant="contained" color="success" className="mt-4 mb-4"
+                        onClick={() => {
+                            clearCart();
+                            history.push('/success');
+                        }}
+                    >Completar pago</Button>
                 </Grid>
                 <Grid item xs={12} sm={5}>
                     <Box

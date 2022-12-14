@@ -12,6 +12,12 @@ import PizzaCard from '../components/PizzaCard';
 import productPizza from '../data/productPizza';
 
 const Pizzas = ( { openCart, cart ,addToCart} ) => {
+
+    
+
+    
+
+
     return (
         <>
             <Navbar openCart={openCart} cart={cart} />

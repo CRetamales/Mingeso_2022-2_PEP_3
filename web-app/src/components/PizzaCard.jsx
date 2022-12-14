@@ -15,6 +15,40 @@ export default function PizzaCard({ pizza, addToCart }) {
     const [qty, setQty] = useState(1);
     const [price, setPrice] = useState(pizza.cost[1]);
 
+    //Funcion que trae el carro guardado en el localStorage
+    const getCart = () => {
+        let cart = localStorage.getItem("cart");
+        if (cart === null) {
+            cart = [];
+        } else {
+            cart = JSON.parse(cart);
+        }
+        return cart;
+    }
+
+    //Funcion que recorre el carro, genera reportes y los agrega al addtoCart
+    const actualizarCarro = (cart) => {
+        let report = [];
+       
+        for (let i = 0; i < cart.length; i++) {
+            let item = cart[i];
+            report.push({
+                name: item.name,
+                qty: item.qty,
+                price: item.price,
+                subtotal: subtotal
+            });
+        }
+        addToCart(report);
+    }
+
+    
+
+        
+
+    
+
+
     //Funcion para cambiar el tipo de masa
     const handleChangePreparationMass = (event) => {
         setPreparationMass(event.target.name);
