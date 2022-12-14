@@ -94,7 +94,18 @@ export default function PizzaCard({ pizza }) {
         setPrice(price);
     }
 
-
+    const generateOrder = () => {
+        let order = {
+            'id': pizza.id,
+            'name': pizza.name,
+            'typemass': preparationMass,
+            'size': size,
+            'qty': qty,
+            'price': price,
+        }
+        console.log(order);
+        handleClose();
+    }
 
     return (
         <>
@@ -145,7 +156,9 @@ export default function PizzaCard({ pizza }) {
                 </Button>
             </CardActions>
             <CardActions>
-                <Button endIcon={<ShoppingCart />} size="small" variant="contained" >
+                <Button endIcon={<ShoppingCart />}
+                 onClick={generateOrder}
+                 size="small" variant="contained" >
                     + Añadir al carrito
                 </Button>
             </CardActions>
@@ -185,7 +198,7 @@ export default function PizzaCard({ pizza }) {
                 <DialogContentText className="mt-2">Tamaño</DialogContentText>
                 <RadioGroup
                     row
-                    aria-aria-labelledby="demo-row-radio-butoons-group-label"
+                    aria-label="tamaño"
                     name="row-radio-buttons-group"
                 >
                     {/*Tamaño de la pizza */}
@@ -263,16 +276,7 @@ export default function PizzaCard({ pizza }) {
                     
                     <strong>${price}</strong>
                 </Typography>
-
-
-
-                 
                 </DialogContentText>
-                
-
-            
-            
-
             </DialogContent>
             <DialogActions>
                 {/*Boton para cancelar relleno*/}
@@ -289,7 +293,8 @@ export default function PizzaCard({ pizza }) {
                     Cancelar
                 </Button>
                 {/*Boton para agregar */}
-                <Button onClick={() => setOpenDialog(false)} color="success"
+                <Button onClick={generateOrder}
+                    color="success"
                     variant="filled"
                     sx={{
                         color: "white",

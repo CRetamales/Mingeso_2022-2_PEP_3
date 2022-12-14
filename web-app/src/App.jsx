@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
 
 import { Routes, Route } from 'react-router-dom'
@@ -12,13 +11,27 @@ import Pizzas from './pages/Pizzas'
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [cart, setCart] = useState([]);
+  const [showCart, setShowCart] = useState(false);
+
+  const openCart = () => {
+    setShowCart(true);
+  }
+
+  const closeCart = () => {
+    setShowCart(false);
+  }
 
   return (
-    <Layout>
+    <Layout
+      cart={cart}
+      showCart={showCart}
+      openCart={openCart}
+      closeCart={closeCart}
+    >
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Home cart={cart} openCart={openCart} />} />
           <Route path="/section/pizzas" element={<Pizzas />} />
         </Routes>
     </Layout>
