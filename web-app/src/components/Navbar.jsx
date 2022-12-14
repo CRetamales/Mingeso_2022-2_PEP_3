@@ -8,7 +8,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 //Importar data
 import pages from '../data/pages';
 
-export default function Navbar() {
+export default function Navbar({ openCart, cart }) {
     return (
         <>
             <AppBar position="static" style={{ backgroundColor: 'whitesmoke' }}>
@@ -48,6 +48,7 @@ export default function Navbar() {
                             alignItems: 'center',
                             flexGrow: 1,
                         }}
+                        onClick={() => openCart()}
                         >
                             
                             <Badge badgeContent={4} color="error">

@@ -7,10 +7,10 @@
 //Componentes
 import Navbar from '../components/Navbar';
 
-const Home = () => {
+const Home = ( { openCart, cart } ) => {
     return (
         <>
-            <Navbar />
+            <Navbar openCart={openCart} cart={cart} />
             <div>
             <h1>Home</h1>
 

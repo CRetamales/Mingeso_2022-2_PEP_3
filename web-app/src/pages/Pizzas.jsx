@@ -14,7 +14,6 @@ import productPizza from '../data/productPizza';
 const Pizzas = () => {
     return (
         <>
-            <Navbar />
             <Box sx={{ mt: 4 }}>
                 <Container maxWidth="lg">
                     <Grid 
