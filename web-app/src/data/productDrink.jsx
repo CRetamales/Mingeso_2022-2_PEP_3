@@ -7,12 +7,12 @@ import drinkCachantunConGas from '../data/images/drinkCachantunConGas.jpg';
 import drinkCachantunSinGas from '../data/images/drinkCachantunSinGas.jpg';
 
 const productDrink = [
-    { 'id': 1, 'name': 'Coca Cola', 'price': 1300, 'size': '500ml' , 'type': 'bebidas', 'image': drinkCocaCola },
-    { 'id': 2, 'name': 'Fanta', 'price': 1300, 'size': '500ml' , 'type': 'bebidas' , 'image': drinkFanta},
-    { 'id': 3, 'name': 'Watts Durazno', 'price': 1200, 'size': '500ml' , 'type': 'jugos' , 'image': drinkWattsDurazno},
-    { 'id': 4, 'name': 'Watts Piña', 'price': 1200, 'size': '500ml' , 'type': 'jugos'   , 'image': drinkWattsPina},
-    { 'id': 5, 'name': 'Cachantun con Gas', 'price': 1000, 'size': '500ml' , 'type': 'agua' , 'image': drinkCachantunConGas},
-    { 'id': 6, 'name': 'Cachantun sin Gas', 'price': 1000, 'size': '500ml' , 'type': 'agua' , 'image': drinkCachantunSinGas},
+    { 'id': 1, 'name': 'Coca Cola', 'cost': [1300,2500], 'size': ['500','1000'] , 'type': 'bebidas', 'image': drinkCocaCola },
+    { 'id': 2, 'name': 'Fanta', 'cost': [1300,2500], 'size': ['500','1000'] , 'type': 'bebidas' , 'image': drinkFanta},
+    { 'id': 3, 'name': 'Watts Durazno', 'cost': [1200,2400], 'size': ['500','1000'], 'type': 'jugos' , 'image': drinkWattsDurazno},
+    { 'id': 4, 'name': 'Watts Piña', 'cost': [1200,2400], 'size': ['500','1000'] , 'type': 'jugos'   , 'image': drinkWattsPina},
+    { 'id': 5, 'name': 'Cachantun con Gas', 'cost': [1000,1800], 'size': ['500','1000'] , 'type': 'agua' , 'image': drinkCachantunConGas},
+    { 'id': 6, 'name': 'Cachantun sin Gas', 'cost': [1000,1800], 'size': ['500','1000'] , 'type': 'agua' , 'image': drinkCachantunSinGas},
 ]
 
 export default productDrink;

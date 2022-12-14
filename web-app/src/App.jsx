@@ -8,6 +8,8 @@ import Layout from './components/Layout/Layout'
 import Home from './pages/Home'
 import Index from './pages/Index'
 import Pizzas from './pages/Pizzas'
+import Bebidas from './pages/Bebidas'
+import Extras from './pages/Extras'
 import Checkout from './pages/Checkout'
 
 
@@ -60,6 +62,8 @@ function App() {
           <Route path="/" element={<Index />} exact /> 
           <Route path="/home" element={<Home openCart={openCart} cart={cart} />} exact />
           <Route path="/section/pizzas" element={<Pizzas openCart={openCart} cart={cart} addToCart={addToCart} />} exact />
+          <Route path="/section/bebidas" element={<Bebidas openCart={openCart} cart={cart} addToCart={addToCart} />} exact />
+          <Route path="/section/extras" element={<Extras openCart={openCart} cart={cart} addToCart={addToCart} />} exact />
           <Route path= '/checkout' element={<Checkout openCart={openCart} cart={cart} />} exact />
         </Routes>
     </Layout>

@@ -7,18 +7,14 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
 
-export default function PizzaCard({ pizza, addToCart }) {
+export default function DrinkCard({ drink, addToCart }) {
 
     const [openDialog, setOpenDialog] = useState(false);
-    const [preparationMass, setPreparationMass] = useState(pizza.typemass);
-    const [size , setSize] = useState(pizza.size[1]);
     const [qty, setQty] = useState(1);
-    const [price, setPrice] = useState(pizza.cost[1]);
+    const [size, setSize] = useState(drink.size[0]);
+    const [price, setPrice] = useState(drink.cost[0]);
 
-    //Funcion para cambiar el tipo de masa
-    const handleChangePreparationMass = (event) => {
-        setPreparationMass(event.target.name);
-    };
+
 
     //Funcion para abrir dialogo
     const handleClickModify = () => {
@@ -27,9 +23,8 @@ export default function PizzaCard({ pizza, addToCart }) {
 
     //Funcion para cerrar dialogo
     const handleClose = () => {
-        setSize(pizza.size[1]);
-        setPrice(pizza.cost[1]);
-        setPreparationMass("normal");
+        setSize(drink.size[0]);
+        setPrice(drink.cost[0]);
         setQty(1);
         setOpenDialog(false);
 
@@ -41,25 +36,25 @@ export default function PizzaCard({ pizza, addToCart }) {
         setSize(newSize);
 
         //Cambiar el precio de la pizza
-        let sizeIndex = pizza.size.indexOf(newSize);
-        let newPrice = pizza.cost[sizeIndex];
+        let sizeIndex = drink.size.indexOf(newSize);
+        let newPrice = drink.cost[sizeIndex];
         handleChangePrice(newPrice, qty);
 
     }
 
-    //Funcion para cambiar la cantidad de pizzas
+    //Funcion para cambiar la cantidad de bebidas
     const handleChangeQty = (event) => {
         let newQty = parseInt(event.target.value);
         setQty(newQty);
 
-        //Cambiar el precio de la pizza
-        let sizeIndex = pizza.size.indexOf(size);
-        let newPrice = pizza.cost[sizeIndex];
+        //Cambiar el precio de la bebida
+        let sizeIndex = drink.size.indexOf(size);
+        let newPrice = drink.cost[sizeIndex];
         handleChangePrice(newPrice, newQty);
 
     }
 
-    //Funcion para disminuir la cantidad de pizzas
+    //Funcion para disminuir la cantidad de bebidas
     const handleDecreaseQty = () => {
         let newQty = qty - 1;
         if (newQty < 1) {
@@ -67,13 +62,13 @@ export default function PizzaCard({ pizza, addToCart }) {
         }
         setQty(newQty);
 
-        //Cambiar el precio de la pizza
-        let sizeIndex = pizza.size.indexOf(size);
-        let newPrice = pizza.cost[sizeIndex];
+        //Cambiar el precio de la bebida
+        let sizeIndex =  drink.size.indexOf(size);
+        let newPrice = drink.cost[sizeIndex];
         handleChangePrice(newPrice, newQty);
     }
 
-    //Funcion para aumentar la cantidad de pizzas
+    //Funcion para aumentar la cantidad de bebidas
     const handleIncreaseQty = () => {
         let newQty = qty + 1;
         if (newQty > 50) {
@@ -81,14 +76,14 @@ export default function PizzaCard({ pizza, addToCart }) {
         }
         setQty(newQty);
 
-        //Cambiar el precio de la pizza
-        let sizeIndex = pizza.size.indexOf(size);
-        let newPrice = pizza.cost[sizeIndex];
+        //Cambiar el precio de la bebida
+        let sizeIndex = drink.size.indexOf(size);
+        let newPrice = drink.cost[sizeIndex];
         handleChangePrice(newPrice, newQty);
     }
 
 
-    //Funcion para cambiar el precio de la pizza
+    //Funcion para cambiar el precio de la bebida
     const handleChangePrice = (newPrice, newQty) => {
         let price = newPrice * newQty;
         setPrice(price);
@@ -96,9 +91,9 @@ export default function PizzaCard({ pizza, addToCart }) {
 
     const generateOrder = () => {
         let order = {
-            'id': pizza.id,
-            'name': pizza.name,
-            'typemass': preparationMass,
+            'id': drink.id,
+            'name': drink.name,
+            'type': drink.type,
             'size': size,
             'qty': qty,
             'price': price,
@@ -110,7 +105,7 @@ export default function PizzaCard({ pizza, addToCart }) {
     return (
         <>
         <Card sx={{ maxWidth: 345, marginLeft: 2, marginRight: 2, marginBottom: 2, backgroundColor: 'whitesmoke' }}>
-            <CardMedia component="img" height="140" image={pizza.image} alt={pizza.name} />
+            <CardMedia component="img" height="140" image={drink.image} alt={drink.name} />
             <CardContent>
                  
                 <Typography gutterBottom  variant="h6" component="div"
@@ -126,16 +121,18 @@ export default function PizzaCard({ pizza, addToCart }) {
                         
                     }}
                 >
-                    <strong>Pizza {pizza.name}</strong>
+                    <strong>Bebida {drink.name}</strong>
                 </Typography>
                 <Typography variant="subtitle2" color="text.secondary">
-                    {/*Tamaño de la pizza */}
+                    {/*Tamaño de la bebida */}
                     <strong>Tamaño: </strong>
-                    {pizza.size.join(', ')}.
+                    {drink.size.map((s) => (
+                        <span key={s}>{s}  </span>
+                    ))}
                 </Typography>
                 <Typography variant="subtitle2" color="text.secondary">
-                    {/*Precio de la pizza*/}
-                    <strong>Precio:</strong> {pizza.cost.map((cost) => (
+                    {/*Precio de la bebida */}
+                    <strong>Precio:</strong> {drink.cost.map((cost) => (
                         <span key={cost}>${cost}  </span>
                     ))}
                 </Typography>
@@ -164,37 +161,10 @@ export default function PizzaCard({ pizza, addToCart }) {
             </CardActions>
 
         </Card>
-        {/*Dialogo para modificar pizza */}
+        {/*Dialogo para modificar bebida */}
         <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
-            {/*Mostrar nombre de pizza */}
+            {/*Mostrar nombre de bebida */}
             <DialogContent>
-                <Typography variant="h6" component="div">
-                    <strong>Modificar Pizza {pizza.name}</strong>
-                </Typography>
-                <DialogContentText> Tipo de Masa</DialogContentText>
-                <FormGroup>
-                    {/*Masa de la pizza normal o delgada */}
-                    <FormControlLabel 
-                        control = {
-                            <Checkbox 
-                                checked={preparationMass === 'normal' ? true : false}
-                                name="normal"
-                                onChange={handleChangePreparationMass}
-                            />
-                            }
-                            label="Normal"
-                    />
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                checked={preparationMass === 'delgada' ? true : false}
-                                name="delgada"
-                                onChange={handleChangePreparationMass}
-                            />
-                        }
-                        label="Delgada"
-                    />
-                </FormGroup>
                 <DialogContentText className="mt-2">Tamaño</DialogContentText>
                 <RadioGroup
                     row
@@ -202,7 +172,7 @@ export default function PizzaCard({ pizza, addToCart }) {
                     name="row-radio-buttons-group"
                 >
                     {/*Tamaño de la pizza */}
-                    {pizza.size.map((s, index) => {
+                    {drink.size.map((s, index) => {
                         return (
                             <FormControlLabel
                                 key={index}
@@ -215,7 +185,7 @@ export default function PizzaCard({ pizza, addToCart }) {
                         )
                     })}
                 </RadioGroup>
-                {/*Cantidad de pizza */}
+                {/*Cantidad de bebidas */}
                 <DialogContentText className="mt-2">Cantidad</DialogContentText>
                 <TextField 
                     id="emp-qty"
@@ -224,7 +194,7 @@ export default function PizzaCard({ pizza, addToCart }) {
                     size="small"
                     onChange={handleChangeQty}
                 />
-                {/*Boton para agregar pizza */}
+                {/*Boton para agregar bebida */}
                 <IconButton 
                     color="success"
                     fontSize="large"
@@ -235,7 +205,7 @@ export default function PizzaCard({ pizza, addToCart }) {
                     <AddCircleOutlineIcon />
                 </IconButton>
 
-                {/*Boton para quitar pizza */}
+                {/*Boton para quitar bebida */}
                 <IconButton
                     color="error"
                     fontSize="large"
@@ -246,7 +216,7 @@ export default function PizzaCard({ pizza, addToCart }) {
                     <RemoveCircleOutlineIcon />
                 </IconButton>
 
-                {/*Precio de la pizza */}
+                {/*Precio de la bebida */}
                 
 
                 <DialogContentText className="mt-5"
@@ -279,7 +249,7 @@ export default function PizzaCard({ pizza, addToCart }) {
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
-                {/*Boton para cancelar relleno*/}
+                {/*Boton para cancelar */}
                 <Button onClick={handleClose} color="error"
                     variant="filled"
                     sx={{
@@ -312,3 +282,4 @@ export default function PizzaCard({ pizza, addToCart }) {
         </>
     )
 }
+

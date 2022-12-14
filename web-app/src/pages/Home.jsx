@@ -27,15 +27,15 @@ const Home = ( { openCart, cart } ) => {
                     height: '100vh',
                 }}
             >
-                <Typography variant="h1" sx={{color: 'white', fontWeight: 'bold', fontSize: '5rem', textAlign: 'center', marginBottom: '1rem'}}>
+                <Typography variant="h1" sx={{color: 'whitesmoke', fontWeight: 'bold', fontSize: '5rem', textAlign: 'center', marginBottom: '1rem'}}>
                     Bienvenido a la pizzeria
                 </Typography>
-                <Typography variant="h2" sx={{color: 'white', fontWeight: 'bold', fontSize: '3rem', textAlign: 'center', marginBottom: '1rem'}}>
+                <Typography variant="h2" sx={{color: 'whitesmoke', fontWeight: 'bold', fontSize: '3rem', textAlign: 'center', marginBottom: '1rem'}}>
                     Joe's Pizza
                 </Typography>
-                <ButtonBase sx={{backgroundColor: 'white', padding: '1rem', borderRadius: '1rem', marginTop: '1rem'}}>
-                    <Typography variant="h3" sx={{color: 'black', fontWeight: 'bold', fontSize: '2rem', textAlign: 'center'}}>
-                        Ver menú
+                <ButtonBase sx={{backgroundColor: '#A31621', padding: '1rem', borderRadius: '1rem', marginTop: '1rem'}}>
+                    <Typography variant="h3" sx={{color: 'whitesmoke', fontWeight: 'bold', fontSize: '2rem', textAlign: 'center'}}>
+                        Ver Pizzas
                     </Typography>
                 </ButtonBase>
             </Box>

@@ -88,8 +88,8 @@ const Checkout = ( { openCart, cart } ) => {
     const paymentInformationRender = (
         <>
         <Typography variant="h5" className="mb-2 mt-4">Información de pago</Typography>
-        <Grid container spacing={2}>
-            <Grid item xs={12}>
+        <Grid container spacing={2} className="mt-1">
+            <Grid item xs={12} sm={12}>
                 <TextField
                     id="standard-helperText"
                     label="Número de tarjeta"
@@ -134,8 +134,11 @@ const Checkout = ( { openCart, cart } ) => {
     const billingAddress = (
         <>
         <Typography variant="h5" className="mb-2 mt-4">Dirección de facturación</Typography>
-        <Grid container spacing={2}>
-            <Grid item xs={12}>
+        <Grid container spacing={2}
+            className="mt-1"
+        >
+            <Grid item xs= {12} sm={12}>
+
                 <TextField
                     id="standard-helperText"
                     label="Dirección"
@@ -151,29 +154,36 @@ const Checkout = ( { openCart, cart } ) => {
     return (
         <>
         <Navbar openCart={openCart} cart={cart}/>
-        <Grid container spacing={2} className="mt-2">
-            <Grid item xs={12} sm={7}>
-                {personalInformationRender}
-                {paymentInformationRender}
-                {billingAddress}
-                <Button variant="contained" color="success" className="mt-4 mb-4">Completar pago</Button>
+    
+            <Grid container spacing={10} className="mt-2" sx={{height: '40rem',
+                    paddingTop: '5rem',
+                    paddingLeft: '5rem',
+                    paddingRight: '5rem',
+                    paddingBottom: '5rem',
+            }}>
+                <Grid item xs={12} sm={7} display="flex" flexDirection="column" alignItems="center">
+                    {personalInformationRender}
+                    {paymentInformationRender}
+                    {billingAddress}
+                    <Button variant="contained" color="success" className="mt-4 mb-4">Completar pago</Button>
+                </Grid>
+                <Grid item xs={12} sm={5}>
+                    <Box
+                        sx={{p: 2, background: "#E8E8E8", width: '100%',}}
+                        display="flex"
+                        justifyContent={"center"}
+                        flexDirection="column"
+                        alignItems="center"
+                    >
+                        <Typography variant="h5" className="mb-3">Carro Actual</Typography>
+                        <Paper>
+                            {cartContent}
+                        </Paper>
+                        <Typography variant="h5" className="mt-3">Total: ${cartTotal}</Typography>
+                    </Box>
+                </Grid>
             </Grid>
-            <Grid item xs={12} sm={5}>
-                <Box
-                    sx={{p: 2, background: "#E8E8E8", width: '100%',}}
-                    display="flex"
-                    justifyContent={"center"}
-                    flexDirection="column"
-                    alignItems="center"
-                >
-                    <Typography variant="h5" className="mb-3">Carro Actual</Typography>
-                    <Paper>
-                        {cartContent}
-                    </Paper>
-                    <Typography variant="h5" className="mt-3">Total: ${cartTotal}</Typography>
-                </Box>
-            </Grid>
-        </Grid>
+        
         </>
     )
 }
