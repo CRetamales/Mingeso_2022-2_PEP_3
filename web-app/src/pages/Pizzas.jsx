@@ -11,9 +11,10 @@ import PizzaCard from '../components/PizzaCard';
 //Data para las pizzas
 import productPizza from '../data/productPizza';
 
-const Pizzas = () => {
+const Pizzas = ( { openCart, cart ,addToCart} ) => {
     return (
         <>
+            <Navbar openCart={openCart} cart={cart} />
             <Box sx={{ mt: 4 }}>
                 <Container maxWidth="lg">
                     <Grid 
@@ -23,7 +24,7 @@ const Pizzas = () => {
                     >
                         {/*<div key = {index}> pza.name*/}
                         {productPizza.map((pza, index) => (
-                            <PizzaCard key={index} pizza={pza} />
+                            <PizzaCard key={index} pizza={pza} addToCart={addToCart} />
                         ))}
 
                         

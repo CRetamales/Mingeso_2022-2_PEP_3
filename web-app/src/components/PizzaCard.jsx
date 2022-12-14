@@ -7,7 +7,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import { padding } from "@mui/system";
 
-export default function PizzaCard({ pizza }) {
+export default function PizzaCard({ pizza, addToCart }) {
 
     const [openDialog, setOpenDialog] = useState(false);
     const [preparationMass, setPreparationMass] = useState(pizza.typemass);
@@ -103,7 +103,7 @@ export default function PizzaCard({ pizza }) {
             'qty': qty,
             'price': price,
         }
-        console.log(order);
+        addToCart(order);
         handleClose();
     }
 

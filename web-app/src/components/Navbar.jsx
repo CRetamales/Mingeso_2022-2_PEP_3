@@ -51,7 +51,8 @@ export default function Navbar({ openCart, cart }) {
                         onClick={() => openCart()}
                         >
                             
-                            <Badge badgeContent={4} color="error">
+                            <Badge badgeContent={cart && cart.length}
+                            color="error">
                                 
                                 <ShoppingCartIcon  sx={{ color: 'black' }} />
                             </Badge>
